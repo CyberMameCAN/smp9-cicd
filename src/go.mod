@@ -1,4 +1,4 @@
-module github.com/CyberMameCAN/WinningTicket
+module github.com/CyberMameCAN/smp9-cicd
 
 go 1.17
 
