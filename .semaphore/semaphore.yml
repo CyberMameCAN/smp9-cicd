@@ -21,7 +21,7 @@ blocks:
           value: 'on'
         - name: GOFLAGS
           value: '-mod=vendor'
-  - name: Tests
+  - name: Test
     task:
       env_vars:
         - name: GO111MODULE
