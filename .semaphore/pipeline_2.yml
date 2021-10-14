@@ -12,8 +12,8 @@ blocks:
           commands:
             - checkout
             - echo "$DOCKER_PASSWORD" | docker login  --username "$DOCKER_USERNAME" --password-stdin
-            - docker pull $DOCKER_USERNAME/smp9-cicd-production
-            - docker build -f Dockerfile.production --cache-from $DOCKER_USERNAME/smp9-cicd-production -t $DOCKER_USERNAME/smp9-cicd-production .
-            - docker push $DOCKER_USERNAME/smp9-cicd-production
+            - 'docker pull $DOCKER_USERNAME/smp9-cicd-production:latest'
+            - 'docker build -f Dockerfile.production --cache-from $DOCKER_USERNAME/smp9-cicd-production:latest -t $DOCKER_USERNAME/smp9-cicd-production:latest .'
+            - 'docker push $DOCKER_USERNAME/smp9-cicd-production:latest'
       secrets:
         - name: dockerhub
