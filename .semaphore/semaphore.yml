@@ -21,7 +21,7 @@ blocks:
           value: 'on'
         - name: GOFLAGS
           value: '-mod=vendor'
-  - name: 'Block #2'
+  - name: Test
     task:
       env_vars:
         - name: GO111MODULE
@@ -31,10 +31,13 @@ blocks:
       jobs:
         - name: Test
           commands:
-            - sem-version go 1.17
-            - checkout
-            - cd src
-            - 'cache restore vendor-$SEMAPHORE_GIT_BRANCH-$(checksum go.mod),vendor-$SEMAPHORE_GIT_BRANCH,vendor-master'
+            - go test ./...
+      prologue:
+        commands:
+          - sem-version go 1.17
+          - checkout
+          - cd src
+          - 'cache restore vendor-$SEMAPHORE_GIT_BRANCH-$(checksum go.mod),vendor-$SEMAPHORE_GIT_BRANCH,vendor-master'
 promotions:
   - name: Dockerize
     pipeline_file: pipeline_2.yml
